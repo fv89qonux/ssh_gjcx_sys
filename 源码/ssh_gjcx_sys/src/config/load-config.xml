@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="load" namespace="/load" extends="json-default">
+		<action name="load_*" class="SpringCreateLoadAction"
+			method="{1}">
+			<result name="searchSuccess">
+				/WEB-INF/jsp/user/search.jsp
+			</result>
+			<result name="detailSuccess" >
+				/WEB-INF/jsp/user/detail.jsp
+			</result>
+			<result name="deleteSuccess"  type="chain">
+				user_search
+			</result>
+			
+		</action>
+		
+	</package>
+
+</struts>

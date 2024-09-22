@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="pic" namespace="/pic" extends="json-default">
+		<action name="pic_*" class="SpringCreatePicAction"
+			method="{1}">
+			<!-- 后台 -->
+			<result name="searchSuccess" >
+				/WEB-INF/jsp/pic/search.jsp
+			</result>
+			<result name="deleteSuccess"  type="chain">
+				pic_search
+			</result>
+			<result name="updateInitSuccess">
+				/WEB-INF/jsp/pic/edit.jsp
+			</result>
+			
+			<result name="insertSuccess"  type="chain">
+				pic_search
+			</result>
+			<result name="updateSuccess"  type="chain">
+				pic_search
+			</result>
+			<result name="insertInitSuccess">
+				/WEB-INF/jsp/pic/edit.jsp
+			</result>
+			<result name="detailSuccess">
+				/WEB-INF/jsp/pic/pic.jsp
+			</result>
+			<!-- 前台 -->
+			
+			<result name="searchQSuccess">
+				/WEB-INF/jsp/pic/picQ.jsp
+			</result>
+			
+		</action>
+		
+	</package>
+
+</struts>

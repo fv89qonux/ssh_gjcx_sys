@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="upload" namespace="/upload" extends="json-default">
+		<action name="upload_*" class="SpringCreateLoadAction"
+			method="{1}">
+			
+			<result name="searchSuccess" >
+				/WEB-INF/jsp/upload/search.jsp
+			</result>
+			<result name="searchQSuccess" >
+				/WEB-INF/jsp/upload/search_h.jsp
+			</result>
+			
+			<result name="insertSuccess"  type="chain">
+				upload_search
+			</result>
+			<result name="insertInitSuccess">
+				/WEB-INF/jsp/upload/edit.jsp
+			</result>
+			<result name="insertInitQSuccess">
+				/WEB-INF/jsp/upload/edit_h.jsp
+			</result>
+			<result name="insertQSuccess"  type="chain">
+				upload_searchQ
+			</result>
+			
+			<result name="deleteSuccess"  type="chain">
+				upload_searchQ
+			</result>
+			
+		</action>
+		
+	</package>
+
+</struts>

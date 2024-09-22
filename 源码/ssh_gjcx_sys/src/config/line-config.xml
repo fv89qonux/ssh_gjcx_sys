@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="line" namespace="/line" extends="json-default">
+		<action name="line_*" class="SpringCreateLineAction"
+			method="{1}">
+			<result name="searchInitSuccess">
+				/WEB-INF/jsp/line/search.jsp
+			</result>
+			<result name="searchSuccess">
+				/WEB-INF/jsp/line/search.jsp
+			</result>
+			
+			<result name="deleteSuccess"  type="chain">
+				line_searchInit
+			</result>
+			<result name="updateInitSuccess" >
+				/WEB-INF/jsp/line/edit.jsp
+			</result>
+			
+			<result name="updateSuccess"  type="chain">
+				line_searchInit
+			</result>
+			<result name="insertSuccess"  type="chain">
+				line_searchInit
+			</result>
+			<result name="changeSuccess" >
+				/WEB-INF/jsp/line/listChangeLine.jsp
+			</result>
+			
+			<result name="insertInitSuccess" >
+				/WEB-INF/jsp/line/edit.jsp
+			</result>
+			
+			<!-- 前台 -->
+			
+			<result name="searchQInitSuccess">
+				/WEB-INF/jsp/line/searchQ.jsp
+			</result>
+			<result name="searchQSuccess">
+				/WEB-INF/jsp/line/searchQ.jsp
+			</result>
+			<result name="lineDetailSuccess">
+				/WEB-INF/jsp/line/linedetail.jsp
+			</result>
+			<result name="detail">
+				/WEB-INF/jsp/line/detail.jsp
+			</result>
+			
+			<result name="lineScan">
+				/left_q.jsp
+			</result>
+		</action>
+		
+	</package>
+
+</struts>

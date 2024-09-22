@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入Spring2文档声明 -->
+<beans 
+   xmlns="http://www.springframework.org/schema/beans" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+   
+   <bean id="userService" class="com.service.impl.UserServiceImpl"> 
+	    <property name="userDao" ref="userDao"/>
+	</bean> 
+   <bean id="newService" class="com.service.impl.NewServiceImpl"> 
+	    <property name="newDao" ref="newDao"/>
+	</bean> 
+   <bean id="messageService" class="com.service.impl.MessageServiceImpl"> 
+	    <property name="messageDao" ref="messageDao"/>
+	</bean> 
+   <bean id="lineService" class="com.service.impl.LineServiceImpl"> 
+	    <property name="lineDao" ref="lineDao"/>
+	</bean> 
+   <bean id="forumService" class="com.service.impl.ForumServiceImpl"> 
+	    <property name="forumDao" ref="forumDao"/>
+	</bean> 
+   <bean id="picService" class="com.service.impl.PicServiceImpl"> 
+	    <property name="picDao" ref="picDao"/>
+	</bean> 
+   <bean id="loadService" class="com.service.impl.LoadServiceImpl"> 
+	    <property name="loadDao" ref="loadDao"/>
+	</bean> 
+   
+</beans> 
+	

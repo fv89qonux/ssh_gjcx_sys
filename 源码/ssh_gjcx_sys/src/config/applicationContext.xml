@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans 
+       xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"> 
+    	<!-- 配置sessionFactory 工厂-->
+	<!-- 配置事务管理器 :声明一个 Hibernate 3 的 事务管理器供代理类自动管理事务用 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<!-- 传入sessionFactory -->
+	 
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	
+
+	<!-- 声明事务属性，用拦截器并对事务进行管理 -->
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<!-- 配置事务属性 -->
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+		<!-- 把数据源注入给Session工厂 -->
+		<bean id="sessionFactory"
+		   class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		    <property name="configLocation"
+				value="classpath:config/hibernate.cfg.xml">
+			</property>
+		</bean>
+		<bean id="SpringCreateUserAction" class="com.action.UserAction"
+			scope="prototype">
+			<property name="userService">
+				<ref bean="userService" />
+			</property>
+		</bean>
+		
+   		<bean id="SpringCreateNewAction" class="com.action.NewAction"
+			scope="prototype">
+			<property name="newService">
+				<ref bean="newService" />
+			</property>
+		</bean>
+   
+		<bean id="SpringCreateMessageAction" class="com.action.MessageAction"
+			scope="prototype">
+			<property name="messageService">
+				<ref bean="messageService" />
+			</property>
+		</bean>
+   		<bean id="SpringCreateLineAction" class="com.action.LineAction"
+			scope="prototype">
+			<property name="lineService">
+				<ref bean="lineService" />
+			</property>
+		</bean>
+   		<bean id="SpringCreateForumAction" class="com.action.ForumAction"
+			scope="prototype">
+			<property name="forumService">
+				<ref bean="forumService" />
+			</property>
+		</bean>
+   		<bean id="SpringCreatePicAction" class="com.action.PicAction"
+			scope="prototype">
+			<property name="picService">
+				<ref bean="picService" />
+			</property>
+		</bean>
+   		<bean id="SpringCreateLoadAction" class="com.action.LoadAction"
+			scope="prototype">
+			<property name="loadService">
+				<ref bean="loadService" />
+			</property>
+		</bean>
+   
+   <bean id="SpringCreateDownLoadAction" class="com.action.DownLoadAction"
+			scope="prototype">
+			<property name="loadService">
+				<ref bean="loadService" />
+			</property>
+	</bean>
+   
+		<import resource="applicationcontext-service.xml"/> 
+		<import resource="applicationcontext-dao.xml"/> 
+       <import resource="applicationcontext-struts.xml"/> 
+       
+</beans> 

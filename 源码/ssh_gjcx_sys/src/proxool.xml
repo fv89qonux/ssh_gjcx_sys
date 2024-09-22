@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<something-else-entirely>
+	<proxool>
+		<alias>DBPool</alias>
+		 <!-- MySQL -->
+		  <driver-url>
+			jdbc:mysql://127.0.0.1:3306/ssh_gjcx_sys?useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=utf-8
+		</driver-url>
+		
+		<driver-class>com.mysql.cj.jdbc.Driver</driver-class>
+		<driver-properties>
+			<property name="user" value="ssh_gjcx_sys" />
+			<property name="password" value="ssh_gjcx_sys" />
+		</driver-properties>
+		<house-keeping-sleep-time>3600000</house-keeping-sleep-time>
+		<maximum-new-connections>50</maximum-new-connections>
+		<prototype-count>2</prototype-count>
+		<maximum-connection-count>50</maximum-connection-count>
+		<minimum-connection-count>10</minimum-connection-count>
+		<house-keeping-test-sql>
+			select CURRENT_DATE
+		</house-keeping-test-sql>
+	</proxool>
+</something-else-entirely>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="new" namespace="/new" extends="json-default">
+		<action name="new_*" class="SpringCreateNewAction"
+			method="{1}">
+			<result name="searchSuccess">
+				/WEB-INF/jsp/new/search.jsp
+			</result>
+			<result name="updateInitSuccess">
+				/WEB-INF/jsp/new/edit.jsp
+			</result>
+			
+			<result name="insertInitSuccess">
+				/WEB-INF/jsp/new/edit.jsp
+			</result>
+			<result name="insertFail" type="chain">
+				new_search
+			</result>
+			<result name="insertSuccess" type="chain">
+				new_search
+			</result>
+			<result name="updateSuccess"  type="chain">
+				new_search
+			</result>
+			<result name="deleteSuccess"  type="chain">
+				new_search
+			</result>		
+			
+			<!-- 前台 -->
+			<result name="searchQSuccess">
+				/WEB-INF/jsp/new/searchQ.jsp
+			</result>
+			<result name="detailSuccess">
+				/WEB-INF/jsp/new/detail.jsp
+			</result>
+			
+		</action>
+		
+	</package>
+
+</struts>

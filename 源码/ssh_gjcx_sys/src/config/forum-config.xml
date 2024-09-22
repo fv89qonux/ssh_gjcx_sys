@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="forum" namespace="/forum" extends="json-default">
+		<action name="forum_*" class="SpringCreateForumAction"
+			method="{1}">
+			<!-- 后台 -->
+			<result name="searchSuccess" >
+				/WEB-INF/jsp/forum/search.jsp
+			</result>
+			<result name="deleteSuccess"  type="chain">
+				forum_search
+			</result>
+			<result name="deleteDetailSuccess"  type="chain">
+				forum_search
+			</result>
+			
+			<result name="searchDetaiSuccess" >
+				/WEB-INF/jsp/forum/searchDetail.jsp
+			</result>
+			
+			<!-- 前台 -->
+			<result name="searchQSuccess" >
+				/WEB-INF/jsp/forum/searchQ.jsp
+			</result>
+			<result name="insertInitSuccess" >
+				/WEB-INF/jsp/forum/editQ.jsp
+			</result>
+			<result name="insertSuccess"  type="chain"> 
+				forum_searchQ
+			</result>
+			<result name="detailSuccess" > 
+				/WEB-INF/jsp/forum/detail.jsp
+			</result>
+			<result name="insertDetailSuccess"  type="chain"> 
+				forum_searchQ
+			</result>
+			<result name="detailInitSuccess" >
+				/WEB-INF/jsp/forum/editDetailQ.jsp
+			</result>
+			
+		</action>
+		
+	</package>
+
+</struts>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<package name="user" namespace="/user" extends="json-default">
+		<action name="user_*" class="SpringCreateUserAction"
+			method="{1}">
+			<result name="searchFail">/left_q.jsp</result>
+			<result name="searchSuccess">
+				/WEB-INF/jsp/user/search.jsp
+			</result>
+			<result name="detailSuccess" >
+				/WEB-INF/jsp/user/detail.jsp
+			</result>
+			<result name="deleteSuccess"  type="chain">
+				user_search
+			</result>
+			<result name="managerSuccess" >
+				/WEB-INF/jsp/manage/Login_M.jsp
+			</result>
+			
+			<result name="insertInitSuccess" >
+				/WEB-INF/jsp/user/register.jsp
+			</result>
+			
+			<result name="memLoginSuccess" >
+				/index.jsp
+			</result>
+			<result name="fail" >
+				/index.jsp
+			</result>
+			<result name="insertSuccess" >
+				/mainfra_q.jsp
+			</result>
+			<result name="updateInitSuccess" >
+				/WEB-INF/jsp/user/edit.jsp
+			</result>
+			
+			<result name="updateSuccess" >
+				/mainfra_q.jsp
+			</result>
+			
+			<result name="updateInitFail">
+				/mainfra_q.jsp
+			</result>
+		</action>
+			
+	</package>
+
+</struts>
